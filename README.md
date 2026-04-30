@@ -1,42 +1,36 @@
-# Defense Finance Accounting Service (defense-finance-accounting-service)
-- All Department of the Air Force service members who have military pay related questions may call the Total Force Service Center (1 800 525-0102 or DSN 312 665-0102) for assistance or submit a m yFSS ticket. The DFAS Customer Care Center no longer handles these calls.
+# Defense Finance and Accounting Service (defense-finance-accounting-service)
+
+The Defense Finance and Accounting Service (DFAS) is the agency within the Department of Defense responsible for paying members of the U.S. military, DoD civilian employees, contractors, and annuitants, as well as providing finance and accounting services to DoD components and other federal agencies. DFAS exposes member-facing self-service portals such as myPay but does not currently publish a public developer API.
 
 **URL:** [Visit APIs.json URL](https://raw.githubusercontent.com/api-evangelist/defense-finance-accounting-service/refs/heads/main/apis.yml)
 
 ## Scope
 
-- **Type:** Contract 
-- **Position:** Consuming 
-- **Access:** 3rd-Party 
+- **Type:** Index
+- **x-type:** government
+- **Position:** Consuming
+- **Access:** 3rd-Party
 
-## Tags:
+## Tags
 
- - Federal Government
+- Federal Government, Defense, Department of Defense, Finance, Accounting, Military Pay, Civilian Pay, Retirement, Annuitants
 
 ## Timestamps
 
-- **Created:** 2024-12-03 
-- **Modified:** 2024-12-22 
+- **Created:** 2024-12-03
+- **Modified:** 2026-04-28
 
 ## APIs
 
-### Defense Finance Accounting Service
-- All Department of the Air Force service members who have military pay related questions may call the Total Force Service Center (1 800 525-0102 or DSN 312 665-0102) for assistance or submit a m yFSS ticket. The DFAS Customer Care Center no longer handles these calls.
+No public developer APIs are currently published by DFAS. Member-facing services are exposed through portals such as myPay.
 
-**Human URL:** [https://www.dfas.mil](https://www.dfas.mil)
+## Common Properties
 
-
-#### Tags:
-
- - API
-
-#### Properties
-
-- [Documentation](https://www.dfas.mil)
+- [Website](https://www.dfas.mil)
+- [About](https://www.dfas.mil/About-DFAS/)
+- [myPay](https://mypay.dfas.mil)
+- [Contact](https://www.dfas.mil/Customer-Service/)
 
 ## Maintainers
 
-**FN:** Kin Lane
-
-**Email:** info@apievangelist.com
-
+- **Kin Lane** - kin@apievangelist.com
