@@ -29,6 +29,8 @@ created: '2024-12-03'
 modified: '2026-04-28'
 apis: []
 common:
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/dfas
   - type: Website
     url: https://www.dfas.mil
   - type: About
