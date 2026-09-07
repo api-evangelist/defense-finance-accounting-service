@@ -1,11 +1,11 @@
-generated: '2026-07-11'
+generated: '2026-09-07'
 method: probed
 source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
 hosts:
 - host: www.dfas.mil
   https: true
   tls_version: TLSv1.3
-  cert_expires: Aug 17 15:25:38 2026 GMT
+  cert_expires: Nov  2 19:35:49 2026 GMT
   hsts: null
 domains:
 - domain: dfas.mil

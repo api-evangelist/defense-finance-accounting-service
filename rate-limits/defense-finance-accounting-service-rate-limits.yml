@@ -1,10 +1,16 @@
+generated: '2026-09-07'
+method: searched
+source: >-
+  https://www.dfas.mil/ (HTTP 403 to automated clients), https://mypay.dfas.mil/ (HTTP 200),
+  https://corpweb1.dfas.mil/ (HTTP 200) plus web search for DFAS API documentation. No published
+  rate limit, quota, throttle policy or rate-limit response header was found on any DFAS surface.
 specification: API Commons Rate Limits
 specificationVersion: '0.1'
 schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
 provider: Defense Finance and Accounting Service
 providerId: defense-finance-accounting-service
 created: '2026-05-22'
-modified: '2026-05-22'
+modified: '2026-09-07'
 tags:
 - Federal Government
 - Defense
@@ -15,47 +21,27 @@ tags:
 - Civilian Pay
 - Retirement
 - Annuitants
-- Rate Limiting
-- Quotas
-- Throttling
-description: Scaffolded rate limit definitions for the Defense Finance and Accounting Service API surface. Captures per-tier
-  quotas, burst behavior, response signaling, and recovery semantics. Defaults are scaffold values to be replaced with published
-  provider limits.
-headers:
-  limit: X-RateLimit-Limit
-  remaining: X-RateLimit-Remaining
-  reset: X-RateLimit-Reset
-  retryAfter: Retry-After
-  policy: RateLimit-Policy
-responseCodes:
-  throttled: 429
-  quotaExceeded: 429
-  serviceUnavailable: 503
-limits:
-- tier: free
-  name: Free Tier Default
-  scope: api-key
-  metric: requests_per_minute
-  limit: 10
-  burst: 20
-  timeFrame: minute
-  applies:
-  - https://defense-finance-accounting-service.example/api
-  description: Default per-token request rate for the free tier. Bursts above the limit return HTTP 429 with Retry-After.
-- tier: pro
-  name: Pro Tier Default
-  scope: api-key
-  metric: requests_per_minute
-  limit: 120
-  burst: 240
-  timeFrame: minute
-  applies:
-  - https://defense-finance-accounting-service.example/api
-  description: Higher rate envelope for paid plans; reconcile against published commercial terms.
-recoveryStrategies:
-- name: Exponential Backoff
-  description: Wait Retry-After seconds (or back off exponentially up to 60s) before retrying.
-- name: Queue and Retry
-  description: Submit bulk work in batches under the burst envelope.
+description: >-
+  No rate limits are published by the Defense Finance and Accounting Service, because DFAS
+  publishes no public API. There is no developer portal, no API reference, no OpenAPI, and no
+  documented throttling policy or rate-limit response header on any DFAS host.
+limit_count: 0
+limits: []
+headers: {}
+responseCodes: {}
 notes:
-- Replace scaffold values with the provider's published rate limit policy.
+- >-
+  2026-09-07 - This file previously carried a fabricated scaffold: X-RateLimit-* / RateLimit-Policy
+  response headers, 429/503 response codes, and free (10 rpm / 20 burst) and pro (120 rpm / 240
+  burst) tiers against a placeholder domain. None of it came from DFAS, and it was being read as a
+  documented rate-limit signal. Replaced with a recorded zero.
+- >-
+  An honest zero, not an unchecked field. If DFAS publishes an API in future, re-probe for
+  RateLimit-* / Retry-After headers on a live response.
+references:
+- name: DFAS myPay
+  url: https://mypay.dfas.mil
+  status: 200
+- name: DFAS public website (Akamai edge denies automated clients)
+  url: https://www.dfas.mil/
+  status: 403

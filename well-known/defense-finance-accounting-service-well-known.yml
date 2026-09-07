@@ -1,0 +1,156 @@
+generated: '2026-09-07'
+method: probed
+source: >-
+  Live HTTPS probes of the RFC 8615 well-known path list against every host this record knows,
+  run 2026-09-07 with a desktop browser User-Agent and redirects followed.
+provider: Defense Finance and Accounting Service
+providerId: defense-finance-accounting-service
+summary: >-
+  Nothing served. Across four DFAS hosts and nine well-known paths (36 probes) not one path
+  returned a document. mypay.dfas.mil and corpweb1.dfas.mil answer clean 404s on every path;
+  www.dfas.mil answers HTTP 403 "Access Denied" from its Akamai edge to every automated client,
+  including on the homepage and /robots.txt, so its well-known surface could not be read at all.
+  No WellKnown, SecurityTxt, APICatalog or AgentCard pointer is emitted from this probe - a
+  recorded absence is not a presence.
+hosts:
+- host: dfas.mil
+  note: >-
+    Apex. Redirects to www.dfas.mil, which then denies the automated client at the edge; curl
+    reports no completed transfer (status 000) rather than a served response.
+  documents:
+  - path: /.well-known/security.txt
+    status: 000
+    file: null
+  - path: /.well-known/openid-configuration
+    status: 000
+    file: null
+  - path: /.well-known/oauth-authorization-server
+    status: 000
+    file: null
+  - path: /.well-known/oauth-protected-resource
+    status: 000
+    file: null
+  - path: /.well-known/api-catalog
+    status: 000
+    file: null
+  - path: /.well-known/ai-plugin.json
+    status: 000
+    file: null
+  - path: /.well-known/agent-card.json
+    status: 000
+    file: null
+  - path: /.well-known/agent.json
+    status: 000
+    file: null
+  - path: /.well-known/aauth-resource.json
+    status: 000
+    file: null
+- host: www.dfas.mil
+  note: >-
+    Primary public website, fronted by Akamai (www.dfas.mil.edgekey.net). Every path returns an
+    identical HTML "Access Denied" body with HTTP 403, including / and /robots.txt, under a plain
+    UA, a desktop Chrome UA and a Googlebot UA. The same denial applies to www.defense.gov,
+    www.dla.mil and www.dcaa.mil from this egress, so it is a DoD-wide edge policy against our
+    probe, not a statement about what DFAS serves. Treat these as unread, not as absent.
+  documents:
+  - path: /.well-known/security.txt
+    status: 403
+    file: null
+  - path: /.well-known/openid-configuration
+    status: 403
+    file: null
+  - path: /.well-known/oauth-authorization-server
+    status: 403
+    file: null
+  - path: /.well-known/oauth-protected-resource
+    status: 403
+    file: null
+  - path: /.well-known/api-catalog
+    status: 403
+    file: null
+  - path: /.well-known/ai-plugin.json
+    status: 403
+    file: null
+  - path: /.well-known/agent-card.json
+    status: 403
+    file: null
+  - path: /.well-known/agent.json
+    status: 403
+    file: null
+  - path: /.well-known/aauth-resource.json
+    status: 403
+    file: null
+- host: mypay.dfas.mil
+  note: >-
+    myPay member self-service portal (Angular SPA behind an F5 shield). Reachable: / returns 200
+    and /robots.txt and /sitemap.xml are served. Every well-known path returns a genuine 404 with
+    an empty body - not an SPA catch-all - so this is a real recorded absence.
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+    file: null
+  - path: /.well-known/openid-configuration
+    status: 404
+    file: null
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+    file: null
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+    file: null
+  - path: /.well-known/api-catalog
+    status: 404
+    file: null
+  - path: /.well-known/ai-plugin.json
+    status: 404
+    file: null
+  - path: /.well-known/agent-card.json
+    status: 404
+    file: null
+  - path: /.well-known/agent.json
+    status: 404
+    file: null
+  - path: /.well-known/aauth-resource.json
+    status: 404
+    file: null
+- host: corpweb1.dfas.mil
+  note: >-
+    AskDFAS customer-service application host. Reachable: / returns 200 (a redirection shim).
+    Every well-known path returns 404 with the application's HTML error page.
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+    file: null
+  - path: /.well-known/openid-configuration
+    status: 404
+    file: null
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+    file: null
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+    file: null
+  - path: /.well-known/api-catalog
+    status: 404
+    file: null
+  - path: /.well-known/ai-plugin.json
+    status: 404
+    file: null
+  - path: /.well-known/agent-card.json
+    status: 404
+    file: null
+  - path: /.well-known/agent.json
+    status: 404
+    file: null
+  - path: /.well-known/aauth-resource.json
+    status: 404
+    file: null
+counts:
+  hosts_probed: 4
+  paths_per_host: 9
+  probes: 36
+  documents_served: 0
+  http_200: 0
+  http_403: 9
+  http_404: 18
+  http_000: 9

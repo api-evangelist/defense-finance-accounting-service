@@ -22,16 +22,18 @@ deliveryModel:
   generated: '2026-08-28'
   method: derived
 accessModel:
-  pricing: free
-  onboarding: unknown
+  pricing: unknown
+  onboarding: open
   trial: false
   try_now: false
-  public: false
-  label: Free
-  confidence: medium
+  public: true
+  label: Open access
+  confidence: low
+  probe_state: blocked
   source:
-  - plans
-  generated: '2026-07-22'
+  - rate-limits
+  - security
+  generated: '2026-09-07'
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/defense-finance-accounting-service.png
 access: 3rd-Party
@@ -59,11 +61,13 @@ tags_raw:
   - Retirement
   - Annuitants
 created: '2024-12-03'
-modified: '2026-04-28'
+modified: '2026-09-07'
 apis: []
 common:
   - type: DomainSecurity
     url: security/defense-finance-accounting-service-domain-security.yml
+  - type: LLMsTxt
+    url: llms/defense-finance-accounting-service-llms.txt
   - type: LinkedIn
     url: https://www.linkedin.com/company/dfas
   - type: Website
@@ -77,3 +81,38 @@ common:
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
+x-enrichment:
+  date: '2026-09-07'
+  status: minimal
+  artifacts_added: 2
+  pass: local-v3
+x-coverage:
+  state: blocked
+  reason: bot-challenge
+  detail: >-
+    The Akamai edge fronting www.dfas.mil (www.dfas.mil.edgekey.net) returns an HTTP 403 "Access
+    Denied" HTML page to every automated client on every path - including / and /robots.txt - under
+    a plain, a desktop Chrome and a Googlebot User-Agent, so the agency's own website could not be
+    read this pass; the identical denial hits www.defense.gov, www.dla.mil and www.dcaa.mil from
+    this egress, confirming a DoD-wide edge policy rather than anything DFAS chose. The hosts we
+    could reach - mypay.dfas.mil (200) and corpweb1.dfas.mil (200) - served clean 404s on all nine
+    well-known paths and on /openapi.json, /swagger.json and /llms.txt, and no DFAS developer
+    program, API reference or machine-readable contract surfaced in registry or web search.
+  evidence:
+    - url: https://www.dfas.mil/
+      status: 403
+    - url: https://www.dfas.mil/robots.txt
+      status: 403
+    - url: https://www.dfas.mil/.well-known/api-catalog
+      status: 403
+    - url: https://mypay.dfas.mil/
+      status: 200
+    - url: https://mypay.dfas.mil/openapi.json
+      status: 404
+    - url: https://mypay.dfas.mil/.well-known/agent-card.json
+      status: 404
+    - url: https://corpweb1.dfas.mil/
+      status: 200
+    - url: https://corpweb1.dfas.mil/.well-known/security.txt
+      status: 404
+  checked: '2026-09-07'

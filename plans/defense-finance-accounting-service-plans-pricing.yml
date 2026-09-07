@@ -1,10 +1,16 @@
+generated: '2026-09-07'
+method: searched
+source: >-
+  https://www.dfas.mil/ (HTTP 403 to automated clients), https://mypay.dfas.mil/ (HTTP 200),
+  https://corpweb1.dfas.mil/ (HTTP 200) plus web search for a DFAS developer program or API
+  pricing page. No plan, tier, quota or price for any API product was found.
 specification: API Commons Plans
 specificationVersion: '0.1'
 schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
 provider: Defense Finance and Accounting Service
 providerId: defense-finance-accounting-service
 created: '2026-05-22'
-modified: '2026-05-22'
+modified: '2026-09-07'
 tags:
 - Federal Government
 - Defense
@@ -15,40 +21,27 @@ tags:
 - Civilian Pay
 - Retirement
 - Annuitants
-description: Machine-readable plans scaffold for the Defense Finance and Accounting Service API surface. Conforms to the API
-  Commons Plans schema. Tier limits and prices are scaffold defaults; replace with provider-published values.
-plans:
-- id: defense-finance-accounting-service-free
-  name: Free
-  type: freemium
-  description: Free entry tier for the Defense Finance and Accounting Service API surface. Intended for evaluation, prototyping,
-    and low-volume integrations. Real limits and pricing must be reconciled with the provider's published plan documentation.
-  entries:
-  - label: API Requests
-    description: Monthly API request quota across all included endpoints
-    name: api_requests
-    type: quota
-    metric: requests
-    limit: 1000
-    timeFrame: month
-    geo: global
-    domains:
-    - https://defense-finance-accounting-service.example/api
-    unit: 1
-    price: '0.00'
-    userMultiplied: false
-  - label: Rate Limit
-    description: Maximum requests per minute on the free tier
-    name: rate_limit
-    type: rate
-    metric: requests_per_minute
-    limit: 10
-    timeFrame: minute
-    geo: global
-    domains:
-    - https://defense-finance-accounting-service.example/api
-    unit: 1
-    price: '0.00'
+description: >-
+  The Defense Finance and Accounting Service publishes no API plans, tiers or pricing. DFAS is a
+  U.S. Department of Defense payroll and accounting agency funded through the Defense Working
+  Capital Fund; its public surfaces are member self-service portals (myPay) and informational
+  pages, not a commercial API product. There is no developer program, no sign-up, and therefore
+  nothing to price.
+plan_count: 0
+plans: []
+notes:
+- >-
+  2026-09-07 - This file previously carried a fabricated scaffold: a "Free" freemium tier with a
+  1,000 request/month quota, a 10 req/min rate limit and a placeholder domain
+  (https://defense-finance-accounting-service.example/api). None of it came from DFAS. It has been
+  replaced with a recorded zero so the catalog does not credit DFAS with plans it never published.
+- >-
+  An honest zero. Re-check if DFAS ever stands up a developer program; today the only public
+  transaction surfaces are myPay (member login) and AskDFAS on corpweb1.dfas.mil.
 references:
-- name: Defense Finance and Accounting Service API Documentation
-  url: https://raw.githubusercontent.com/api-evangelist/defense-finance-accounting-service/refs/heads/main/apis.yml
+- name: DFAS myPay
+  url: https://mypay.dfas.mil
+  status: 200
+- name: DFAS public website (Akamai edge denies automated clients)
+  url: https://www.dfas.mil/
+  status: 403
