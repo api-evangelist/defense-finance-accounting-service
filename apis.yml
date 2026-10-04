@@ -41,7 +41,7 @@ position: Consuming
 specificationVersion: '0.23'
 kind: government
 tags:
-  - Federal-Government
+  - Federal Government
   - Defense
   - Department of Defense
   - Finance
@@ -60,6 +60,7 @@ tags_raw:
   - Civilian Pay
   - Retirement
   - Annuitants
+  - Federal-Government
 created: '2024-12-03'
 modified: '2026-09-07'
 apis: []
