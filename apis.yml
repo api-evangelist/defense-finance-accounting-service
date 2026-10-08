@@ -65,6 +65,12 @@ created: '2024-12-03'
 modified: '2026-09-07'
 apis: []
 common:
+  - type: Plans
+    url: plans/defense-finance-accounting-service-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/defense-finance-accounting-service-rate-limits.yml
+  - type: FinOps
+    url: finops/defense-finance-accounting-service-finops.yml
   - type: DomainSecurity
     url: security/defense-finance-accounting-service-domain-security.yml
   - type: LLMsTxt
